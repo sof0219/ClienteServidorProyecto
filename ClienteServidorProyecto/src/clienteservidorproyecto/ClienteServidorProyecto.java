@@ -17,6 +17,7 @@ public class ClienteServidorProyecto {
         
         
          System.out.println("Holaa chuquillos");
+         System.out.println("Holaa Angie");
         // TODO code application logic here
     }
     
