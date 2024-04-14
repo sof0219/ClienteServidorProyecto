@@ -20,10 +20,10 @@ public class Principal {
         
         Biblioteca B = new Biblioteca();
         
-        B.agregarCliente(new Cliente("Sofia", 19, 169025861));
-        B.agregarCliente(new Cliente("Miguel", 20, 109289233));
-        B.agregarCliente(new Cliente("Adriana", 36, 178262702));
-        B.agregarCliente(new Cliente("Angie", 19, 123778297));
+        B.agregarCliente(new Cliente("Sofia", 19, 169025861,"Sofi","1234"));
+        B.agregarCliente(new Cliente("Miguel", 20, 109289233,"Migue","5678"));
+        B.agregarCliente(new Cliente("Adriana", 36, 178262702,"Adri","123456"));
+        B.agregarCliente(new Cliente("Angie", 19, 123778297,"Ang","7890"));
         
         System.out.println("Lista de clientes en la biblioteca: ");
         for(Cliente c : B.getCliente()){
@@ -35,7 +35,7 @@ public class Principal {
         String nombreClienteNuevo = JOptionPane.showInputDialog("Ingrese el nombre del nuevo cliente:");
         int edadClienteNuevo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del nuevo cliente:"));
         int idClienteNuevo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del nuevo cliente:"));
-        B.agregarCliente(new Cliente(nombreClienteNuevo, edadClienteNuevo, idClienteNuevo));
+        B.agregarCliente(new Cliente(nombreClienteNuevo, edadClienteNuevo, idClienteNuevo));//falta agregar usuario y password
 
         // Mostrar la lista de clientes actualizada en la biblioteca
         System.out.println("\nLista de clientes actualizada en la biblioteca:");
