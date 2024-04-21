@@ -9,8 +9,13 @@ public class Historia extends Pelicula{
     private String momentoHistorico;
     private int edadH;
 
-    public Historia(int idPelicula, String nombrePelicula, int fechaEsteno,int edad,  String momentoHistorico ) {
+    public Historia(int idPelicula, String nombrePelicula, int fechaEsteno,int edadH,  String momentoHistorico ) {
         super(idPelicula, nombrePelicula, fechaEsteno);
+        this.idPelicula = idPelicula;
+        this.nombrePelicula = nombrePelicula;
+        this.fechaEsteno = fechaEsteno;
+        this.edadH = edadH;
+        this.momentoHistorico = momentoHistorico;
     }
 
     public String getMomentoHistorico() {

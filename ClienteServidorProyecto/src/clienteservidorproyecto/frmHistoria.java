@@ -72,7 +72,7 @@ public class frmHistoria extends javax.swing.JFrame {
         jtHistoria = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CRUD Artículo");
+        setTitle("CRUD Historia");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 

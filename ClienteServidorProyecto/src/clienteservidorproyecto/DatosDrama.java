@@ -30,7 +30,7 @@ public class DatosDrama {
             ps.execute();
             return true;
         } catch (SQLException e) {
-            System.err.println("Error al insertar artículo: " + e.getMessage());
+            System.err.println("Error al insertar drama: " + e.getMessage());
             return false;
         } finally {
             try {

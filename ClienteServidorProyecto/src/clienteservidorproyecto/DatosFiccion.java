@@ -30,7 +30,7 @@ public class DatosFiccion {
             ps.execute();
             return true;
         } catch (SQLException e) {
-            System.err.println("Error al insertar artículo: " + e.getMessage());
+            System.err.println("Error al insertar ficcion: " + e.getMessage());
             return false;
         } finally {
             try {

@@ -72,7 +72,7 @@ public class frmFiccion extends javax.swing.JFrame {
         jtFiccion = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("CRUD Artículo");
+        setTitle("CRUD Ficción");
         setBackground(new java.awt.Color(255, 255, 255));
         setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
@@ -356,14 +356,11 @@ public class frmFiccion extends javax.swing.JFrame {
         int edad = Integer.parseInt(txtEdad.getText());
         String ambientacion = txtTabientacion.getText();
 
-        // Crear un objeto Comedia con los datos obtenidos
         Ficcion ficcion = new Ficcion(id, nombre, fecha, edad, ambientacion);
 
-        // Insertar la comedia en la base de datos
         DatosFiccion datosFiccion = new DatosFiccion();
         boolean resultado = datosFiccion.insertarFiccion(ficcion);
 
-        // Verificar el resultado de la inserción y actualizar la tabla
         if (resultado) {
             JOptionPane.showMessageDialog(this, "Ficcion agregada exitosamente");
             cargarDatos();
@@ -395,14 +392,14 @@ public class frmFiccion extends javax.swing.JFrame {
         String nombre = jtFiccion.getValueAt(filaSeleccionada, 1).toString();
         int fecha = Integer.parseInt(jtFiccion.getValueAt(filaSeleccionada, 2).toString());
         int edad = Integer.parseInt(jtFiccion.getValueAt(filaSeleccionada, 3).toString());
-        String tipo = jtFiccion.getValueAt(filaSeleccionada, 4).toString();
+        String ambiente = jtFiccion.getValueAt(filaSeleccionada, 4).toString();
 
         // Mostrar los datos en los campos de texto
         txtid.setText(String.valueOf(id));
         txtNombre.setText(nombre);
         txtFecha.setText(String.valueOf(fecha));
         txtEdad.setText(String.valueOf(edad));
-        txtTabientacion.setText(tipo);
+        txtTabientacion.setText(ambiente);
     
     }//GEN-LAST:event_jtFiccionMouseClicked
 

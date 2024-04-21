@@ -12,6 +12,11 @@ public class Ficcion extends Pelicula {
 
     public Ficcion(int idPelicula, String nombrePelicula, int fechaEsteno, int edadF, String ambientacionF) {
         super(idPelicula, nombrePelicula, fechaEsteno);
+        this.idPelicula = idPelicula;
+        this.nombrePelicula = nombrePelicula;
+        this.fechaEsteno = fechaEsteno;
+        this.edadF = edadF;
+        this.ambientacionF = ambientacionF;
     }
 
     public String getAmbientacionF() {

@@ -6,9 +6,9 @@ package clienteservidorproyecto;
  * @author angie
  */
 public class Pelicula {
-    protected int idPelicula;
-    protected String nombrePelicula;
-    protected int fechaEsteno;
+    public int idPelicula;
+    public String nombrePelicula;
+    public int fechaEsteno;
    
     //Constructor 
 
