@@ -35,7 +35,7 @@ public class Principal {
         String nombreClienteNuevo = JOptionPane.showInputDialog("Ingrese el nombre del nuevo cliente:");
         int edadClienteNuevo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del nuevo cliente:"));
         int idClienteNuevo = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del nuevo cliente:"));
-        B.agregarCliente(new Cliente(nombreClienteNuevo, edadClienteNuevo, idClienteNuevo));//falta agregar usuario y password
+       // B.agregarCliente(new Cliente(nombreClienteNuevo, edadClienteNuevo, idClienteNuevo));//falta agregar usuario y password
 
         // Mostrar la lista de clientes actualizada en la biblioteca
         System.out.println("\nLista de clientes actualizada en la biblioteca:");

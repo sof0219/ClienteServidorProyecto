@@ -1,5 +1,5 @@
 
-package com.mycompany.herencia1;
+package clienteservidorproyecto;
 
 /**
  *
@@ -7,20 +7,50 @@ package com.mycompany.herencia1;
  */
 public class Historia extends Pelicula{
     private String momentoHistorico;
-    private String lugarGeografico;
-    private String descripcionHistoria;
-    
-    //Constructor
-    public Historia(int idPelicula, String nombrePelicula, String fechaPublicacion, String autorPelicula) {
-        super(idPelicula, nombrePelicula, fechaPublicacion, autorPelicula);
-        
-        this.momentoHistorico = momentoHistorico;
-        this.lugarGeografico = lugarGeografico;
-        this.descripcionHistoria = descripcionHistoria;
-        
-                
+    private int edadH;
+
+    public Historia(int idPelicula, String nombrePelicula, int fechaEsteno,int edad,  String momentoHistorico ) {
+        super(idPelicula, nombrePelicula, fechaEsteno);
     }
-    
-    
-    
+
+    public String getMomentoHistorico() {
+        return momentoHistorico;
+    }
+
+    public int getEdadH() {
+        return edadH;
+    }
+
+    public int getIdPelicula() {
+        return idPelicula;
+    }
+
+    public String getNombrePelicula() {
+        return nombrePelicula;
+    }
+
+    public int getFechaEsteno() {
+        return fechaEsteno;
+    }
+
+    public void setMomentoHistorico(String momentoHistorico) {
+        this.momentoHistorico = momentoHistorico;
+    }
+
+    public void setEdadH(int edadH) {
+        this.edadH = edadH;
+    }
+
+    public void setIdPelicula(int idPelicula) {
+        this.idPelicula = idPelicula;
+    }
+
+    public void setNombrePelicula(String nombrePelicula) {
+        this.nombrePelicula = nombrePelicula;
+    }
+
+    public void setFechaEsteno(int fechaEsteno) {
+        this.fechaEsteno = fechaEsteno;
+    }
+       
 }

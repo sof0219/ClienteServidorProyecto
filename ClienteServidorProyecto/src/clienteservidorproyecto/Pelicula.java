@@ -1,5 +1,5 @@
 
-package com.mycompany.herencia1;
+package clienteservidorproyecto;
 
 /**
  *
@@ -8,16 +8,12 @@ package com.mycompany.herencia1;
 public class Pelicula {
     protected int idPelicula;
     protected String nombrePelicula;
-    protected String fechaPublicacion;
-    protected String autorPelicula;
-    
+    protected int fechaEsteno;
+   
     //Constructor 
-    public Pelicula(int idPelicula, String nombrePelicula, String fechaPublicacion, String autorPelicula ){
-        this.idPelicula = idPelicula;
-        this.nombrePelicula = nombrePelicula;
-        this.fechaPublicacion = fechaPublicacion;
-        this. autorPelicula = autorPelicula;
-        
+
+    public Pelicula(int idPelicula, String nombrePelicula, int fechaEsteno) {
+         
     }
-    
+   
 }
