@@ -61,12 +61,27 @@ public class Principal {
                         if (nombre.isEmpty()) {
                             break;
                         }
-                        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del cliente:"));
-                        int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del cliente:"));
+                        int edad;
+                        int id;
 
-                        Cliente cliente = new Cliente(nombre, edad, id);
-                        registro.agregarCliente(cliente);
+                        try {
+                            
+                            String edadStr = JOptionPane.showInputDialog("Ingrese la edad del cliente:");
+                            edad = Integer.parseInt(edadStr);
+
+                            
+                            String idStr = JOptionPane.showInputDialog("Ingrese el ID del cliente:");
+                            id = Integer.parseInt(idStr);
+
+                            
+                            Cliente cliente = new Cliente(nombre, edad, id);
+                            registro.agregarCliente(cliente);
+                        } catch (NumberFormatException e) {
+                            JOptionPane.showMessageDialog(null, "Por favor, ingrese un número válido para la edad y el ID.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
                     }
+                    registro.mostrarClientes();
+
                     StringBuilder mensaje = new StringBuilder("Lista de Clientes:\n");
                     for (Cliente cliente : registro.getCliente()) {
                         mensaje.append("Nombre: ").append(cliente.getNombreCliente()).append("\n")
