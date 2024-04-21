@@ -4,34 +4,65 @@
  */
 package clienteservidorproyecto;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author user
  */
 public class Principal {
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
-        
-        frmComedia menuComedia=new frmComedia();
-        menuComedia.setVisible(true);
-        menuComedia.setLocationRelativeTo(null);
-        
-        frmDrama menuDrama=new frmDrama();
-        menuDrama.setVisible(true);
-        menuDrama.setLocationRelativeTo(null);
-        
-        frmFiccion menuFiccion=new frmFiccion();
-        menuFiccion.setVisible(true);
-        menuFiccion.setLocationRelativeTo(null);
-        
-        frmHistoria menuHistoria=new frmHistoria();
-        menuHistoria.setVisible(true);
-        menuHistoria.setLocationRelativeTo(null);
-        
-        
+
+        String[] opciones = {"Comedia", "Drama", "Ficcion", "Historia", "Cliente", "Salir"};
+
+        String opcionSeleccionada = (String) JOptionPane.showInputDialog(null,
+                "Selecciona una opción:",
+                "Menú",
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]);
+
+        if (opcionSeleccionada != null) {
+            switch (opcionSeleccionada) {
+                case "Comedia" -> {
+                    JOptionPane.showMessageDialog(null, "Has seleccionado Comedia");
+                    
+                    frmComedia menuComedia = new frmComedia();
+                    menuComedia.setVisible(true);
+                    menuComedia.setLocationRelativeTo(null);
+                }
+                case "Drama" -> {
+                    JOptionPane.showMessageDialog(null, "Has seleccionado Drama");
+                    frmDrama menuDrama = new frmDrama();
+                    menuDrama.setVisible(true);
+                    menuDrama.setLocationRelativeTo(null);
+                }
+                case "Ficcion" -> {
+                    JOptionPane.showMessageDialog(null, "Has seleccionado Ficcion");
+                    frmFiccion menuFiccion = new frmFiccion();
+                    menuFiccion.setVisible(true);
+                    menuFiccion.setLocationRelativeTo(null);
+                }
+                case "Historia" -> {
+                    JOptionPane.showMessageDialog(null, "Has seleccionado Historia");
+                    frmHistoria menuHistoria = new frmHistoria();
+                    menuHistoria.setVisible(true);
+                    menuHistoria.setLocationRelativeTo(null);
+                }
+                case "Cliente" -> {
+                    JOptionPane.showMessageDialog(null, "Has seleccionado Cliente");
+                }
+                case "Salir" -> {
+                    JOptionPane.showMessageDialog(null, "Saliendo del programa...");
+                }
+                default -> {
+                    JOptionPane.showMessageDialog(null, "Opción inválida");
+                }
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Saliendo del programa...");
+        }
     }
-    
 }
