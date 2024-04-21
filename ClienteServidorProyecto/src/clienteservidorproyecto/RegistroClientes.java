@@ -5,16 +5,17 @@
 package clienteservidorproyecto;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author migue
  */
-public class Biblioteca {
+public class RegistroClientes {
     private ArrayList<Cliente> cliente;
     
-    public Biblioteca() {
-        this.cliente = new ArrayList<Cliente>();
+    public RegistroClientes() {
+        this.cliente = new ArrayList<>();
     }
     
     public void agregarCliente(Cliente c) {
@@ -41,5 +42,16 @@ public class Biblioteca {
     
     public ArrayList<Cliente>getCliente(){
         return cliente;
+       
+    }
+    
+    public void mostrarClientes() {
+        StringBuilder mensaje = new StringBuilder("Lista de Clientes:\n");
+        for (Cliente c : cliente) {
+            mensaje.append("Nombre: ").append(c.getNombreCliente()).append("\n")
+                    .append("Edad: ").append(c.getEdadCliente()).append("\n")
+                    .append("ID: ").append(c.getIdCliente()).append("\n");
+        }
+        JOptionPane.showMessageDialog(null, mensaje.toString());
     }
 }

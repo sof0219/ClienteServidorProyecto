@@ -27,33 +27,56 @@ public class Principal {
         if (opcionSeleccionada != null) {
             switch (opcionSeleccionada) {
                 case "Comedia" -> {
-                    JOptionPane.showMessageDialog(null, "Has seleccionado Comedia");
-                    
+                    JOptionPane.showMessageDialog(null, "Ingresando a  Comedia");
+
                     frmComedia menuComedia = new frmComedia();
                     menuComedia.setVisible(true);
                     menuComedia.setLocationRelativeTo(null);
                 }
                 case "Drama" -> {
-                    JOptionPane.showMessageDialog(null, "Has seleccionado Drama");
+                    JOptionPane.showMessageDialog(null, "Ingresando a  Drama");
                     frmDrama menuDrama = new frmDrama();
                     menuDrama.setVisible(true);
                     menuDrama.setLocationRelativeTo(null);
                 }
                 case "Ficcion" -> {
-                    JOptionPane.showMessageDialog(null, "Has seleccionado Ficcion");
+                    JOptionPane.showMessageDialog(null, "Ingresando a  Ficcion");
                     frmFiccion menuFiccion = new frmFiccion();
                     menuFiccion.setVisible(true);
                     menuFiccion.setLocationRelativeTo(null);
                 }
                 case "Historia" -> {
-                    JOptionPane.showMessageDialog(null, "Has seleccionado Historia");
+                    JOptionPane.showMessageDialog(null, "Ingresando a Historia");
                     frmHistoria menuHistoria = new frmHistoria();
                     menuHistoria.setVisible(true);
                     menuHistoria.setLocationRelativeTo(null);
                 }
                 case "Cliente" -> {
                     JOptionPane.showMessageDialog(null, "Has seleccionado Cliente");
+
+                    RegistroClientes registro = new RegistroClientes();
+
+                    while (true) {
+                        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente (o deje vacío para salir):");
+                        if (nombre.isEmpty()) {
+                            break;
+                        }
+                        int edad = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad del cliente:"));
+                        int id = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el ID del cliente:"));
+
+                        Cliente cliente = new Cliente(nombre, edad, id);
+                        registro.agregarCliente(cliente);
+                    }
+                    StringBuilder mensaje = new StringBuilder("Lista de Clientes:\n");
+                    for (Cliente cliente : registro.getCliente()) {
+                        mensaje.append("Nombre: ").append(cliente.getNombreCliente()).append("\n")
+                                .append("Edad: ").append(cliente.getEdadCliente()).append("\n")
+                                .append("ID: ").append(cliente.getIdCliente()).append("\n\n");
+                    }
+                    JOptionPane.showMessageDialog(null, mensaje.toString());
+                    registro.mostrarClientes();
                 }
+
                 case "Salir" -> {
                     JOptionPane.showMessageDialog(null, "Saliendo del programa...");
                 }

@@ -9,18 +9,16 @@ package clienteservidorproyecto;
  * @author migue
  */
 public class Cliente {
+
     private String nombreCliente;
     private int edadCliente;
     private int idCliente;
-    private String usuario;
-    private String password;
 
-    public Cliente(String nombreCliente, int edadCliente, int idCliente, String usuario , String password) {
+    public Cliente(String nombreCliente, int edadCliente, int idCliente) {
         this.nombreCliente = nombreCliente;
         this.edadCliente = edadCliente;
         this.idCliente = idCliente;
-        this.usuario = usuario;
-        this.password = password;
+
     }
 
     public String getNombreCliente() {
@@ -45,22 +43,6 @@ public class Cliente {
 
     public void setIdCliente(int idCliente) {
         this.idCliente = idCliente;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
 }
