@@ -15,10 +15,23 @@ public class Principal {
      */
     public static void main(String[] args) {
         
+        frmComedia menuComedia=new frmComedia();
+        menuComedia.setVisible(true);
+        menuComedia.setLocationRelativeTo(null);
         
-         System.out.println("Holaa chuquillos");
-         System.out.println("Holaa Angie");
-        // TODO code application logic here
+        frmDrama menuDrama=new frmDrama();
+        menuDrama.setVisible(true);
+        menuDrama.setLocationRelativeTo(null);
+        
+        frmFiccion menuFiccion=new frmFiccion();
+        menuFiccion.setVisible(true);
+        menuFiccion.setLocationRelativeTo(null);
+        
+        frmHistoria menuHistoria=new frmHistoria();
+        menuHistoria.setVisible(true);
+        menuHistoria.setLocationRelativeTo(null);
+        
+        
     }
     
 }
