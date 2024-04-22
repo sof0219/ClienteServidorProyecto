@@ -26,7 +26,7 @@ public class DatosHistoria {
             ps.setString(2,historia.getNombrePelicula());
             ps.setInt(3, historia.getFechaEsteno());
             ps.setInt(4, historia.getEdadH());
-            ps.setString(5, historia.getMomentoHistorico() );
+            ps.setString(5, historia.getMomentoHistorico());
             ps.execute();
             return true;
         } catch (SQLException e) {
@@ -45,51 +45,73 @@ public class DatosHistoria {
     }
 
     public ArrayList<Historia> todasLasHistoria() {
-        ArrayList<Historia> miListaHistoria = new ArrayList<>(); 
+        ArrayList<Historia> miListaHistoria = new ArrayList<>();
         try {
             Conexion con = new Conexion(); // Primero hay que crear la conexión a la base de datos
-            PreparedStatement st = con.getConexion().prepareStatement("SELECT * FROM historia"); 
-            ResultSet rs = st.executeQuery(); 
+            PreparedStatement st = con.getConexion().prepareStatement("SELECT * FROM historia");
+            ResultSet rs = st.executeQuery();
             while (rs.next()) {
-               
-                 Historia historia = new Historia (rs.getInt("IdH"), rs.getString("NombreH"), rs.getInt("FechaH"), rs.getInt("EdadH"), rs.getString("MomentoH"));
-                 miListaHistoria.add(historia);
+
+                Historia historia = new Historia(rs.getInt("IdH"), rs.getString("NombreH"), rs.getInt("FechaH"), rs.getInt("EdadH"), rs.getString("MomentoH"));
+                miListaHistoria.add(historia);
             }
             rs.close();
-            con.close(); 
+            con.close();
         } catch (SQLException e) {
-            Logger.getLogger(DatosHistoria.class.getName()).log(Level.SEVERE, null, e); 
+            Logger.getLogger(DatosHistoria.class.getName()).log(Level.SEVERE, null, e);
         }
         return miListaHistoria;
     }
 
-
     public ArrayList<Historia> BuscarHistoriaNombre(String NombreH) {
-    ArrayList<Historia> miListaHistoria = new ArrayList<>();
-    try {
-        Conexion con = new Conexion(); 
-        PreparedStatement st = con.getConexion().prepareStatement("SELECT * FROM historia WHERE NombreH LIKE ?"); 
-        NombreH = '%' + NombreH + '%';
-        st.setString(1, NombreH); 
-        ResultSet rs = st.executeQuery(); 
-        while (rs.next()) {
-           
-            Historia historia = new Historia(
-                rs.getInt("IdD"),         
-                rs.getString("NombreD"),  
-                rs.getInt("FechaD"),      
-                rs.getInt("EdadD"),       
-                rs.getString("DescripcionD") 
-            );
-            miListaHistoria.add(historia); 
+        ArrayList<Historia> miListaHistoria = new ArrayList<>();
+        try {
+            Conexion con = new Conexion();
+            PreparedStatement st = con.getConexion().prepareStatement("SELECT * FROM historia WHERE NombreH LIKE ?");
+            NombreH = '%' + NombreH + '%';
+            st.setString(1, NombreH);
+            ResultSet rs = st.executeQuery();
+            while (rs.next()) {
+
+                Historia historia = new Historia(
+                        rs.getInt("IdD"),
+                        rs.getString("NombreD"),
+                        rs.getInt("FechaD"),
+                        rs.getInt("EdadD"),
+                        rs.getString("DescripcionD")
+                );
+                miListaHistoria.add(historia);
+            }
+            rs.close();
+            con.close();
+        } catch (SQLException e) {
+            Logger.getLogger(DatosHistoria.class.getName()).log(Level.SEVERE, null, e);
         }
-        rs.close();
-        con.close(); 
-    } catch (SQLException e) {
-        Logger.getLogger(DatosHistoria.class.getName()).log(Level.SEVERE, null, e);
+        return miListaHistoria;
     }
-    return miListaHistoria;
+
+    public boolean eliminarHistoria(int idHistoria) {
+        Conexion con = new Conexion();
+        PreparedStatement ps = null;
+        String sql = "DELETE FROM historia WHERE IdH=?";
+        try {
+            ps = con.getConexion().prepareStatement(sql);
+            ps.setInt(1, idHistoria);
+            ps.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Error al eliminar historia: " + e.getMessage());
+            return false;
+        } finally {
+            try {
+                if (ps != null) {
+                    ps.close();
+                }
+                con.close();
+            } catch (SQLException e) {
+                System.err.println("Error al cerrar recursos: " + e.getMessage());
+            }
+        }
+    }
 }
-}
-    
 

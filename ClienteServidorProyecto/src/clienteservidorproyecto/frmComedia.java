@@ -11,7 +11,7 @@ import javax.swing.table.DefaultTableModel;
 public class frmComedia extends javax.swing.JFrame {
 
     /**
-     * Creates new form frmArticulo
+     * Creates new form frmComedia
      */
     public frmComedia() {
         initComponents();
@@ -63,7 +63,6 @@ public class frmComedia extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         btnAgregar = new javax.swing.JButton();
-        btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         btnLimpiar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
@@ -201,16 +200,6 @@ public class frmComedia extends javax.swing.JFrame {
             }
         });
 
-        btnModificar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        btnModificar.setForeground(new java.awt.Color(255, 204, 51));
-        btnModificar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/editar.png"))); // NOI18N
-        btnModificar.setText("Modificar");
-        btnModificar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarActionPerformed(evt);
-            }
-        });
-
         btnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btnEliminar.setForeground(new java.awt.Color(255, 204, 51));
         btnEliminar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/img/eliminar.png"))); // NOI18N
@@ -275,16 +264,16 @@ public class frmComedia extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(jLabel4))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(69, 69, 69)
-                        .addComponent(btnModificar)
-                        .addGap(55, 55, 55)
+                        .addGap(61, 61, 61)
                         .addComponent(btnAgregar)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
                         .addComponent(btnLimpiar)
-                        .addGap(50, 50, 50)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnEliminar)
                         .addGap(50, 50, 50)))
                 .addContainerGap())
@@ -299,7 +288,7 @@ public class frmComedia extends javax.swing.JFrame {
                         .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel9))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 702, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -315,7 +304,6 @@ public class frmComedia extends javax.swing.JFrame {
                     .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnAgregar)
                     .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -346,7 +334,20 @@ public class frmComedia extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        // TODO add your handling code here:
+         int filaSeleccionada = jtComedia.getSelectedRow();
+    if (filaSeleccionada == -1) {
+        JOptionPane.showMessageDialog(this, "Seleccione una fila para eliminar");
+    } else {
+        int idComedia = Integer.parseInt(jtComedia.getValueAt(filaSeleccionada, 0).toString());
+        DatosComedia datosComedia = new DatosComedia();
+        boolean resultado = datosComedia.eliminarComedia(idComedia);
+        if (resultado) {
+            JOptionPane.showMessageDialog(this, "Comedia eliminada exitosamente");
+            cargarDatos();
+        } else {
+            JOptionPane.showMessageDialog(this, "Error al eliminar la comedia");
+        }
+    }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
@@ -357,14 +358,14 @@ public class frmComedia extends javax.swing.JFrame {
         int edad = Integer.parseInt(txtEdad.getText());
         String tipo = txtTipo.getText();
 
-        // Crear un objeto Comedia con los datos obtenidos
+        // primero se crea un objeto Comedia con los datos obtenidos
         Comedia comedia = new Comedia(edad, tipo, id, nombre, fecha);
 
-        // Insertar la comedia en la base de datos
+        // aqui se instrs la comedia en la base de datos
         DatosComedia datosComedia = new DatosComedia();
         boolean resultado = datosComedia.insertarComedia(comedia);
 
-        // Verificar el resultado de la inserción y actualizar la tabla
+        // se verifica el resultado de la inserción y actualizar la tabla
         if (resultado) {
             JOptionPane.showMessageDialog(this, "Comedia agregada exitosamente");
             cargarDatos();
@@ -373,10 +374,6 @@ public class frmComedia extends javax.swing.JFrame {
         }
     
     }//GEN-LAST:event_btnAgregarActionPerformed
-
-    private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimpiarActionPerformed
         // TODO add your handling code here:
@@ -461,7 +458,6 @@ public class frmComedia extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnLimpiar;
-    private javax.swing.JButton btnModificar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

@@ -14,10 +14,16 @@ public class Principal {
 
     public static void main(String[] args) {
 
+             mostrarMenuPrincipal();
+    }
+
+    // Meto para llamar el menu
+    public static void mostrarMenuPrincipal() {
         String[] opciones = {"Comedia", "Drama", "Ficcion", "Historia", "Cliente", "Salir"};
 
         String opcionSeleccionada = (String) JOptionPane.showInputDialog(null,
-                "Selecciona una opción:",
+                "Bienvenido a la app de películas FideMovie para administradores \n\n"
+                        + " Selecciona una opción:",
                 "Menú",
                 JOptionPane.QUESTION_MESSAGE,
                 null,
@@ -63,18 +69,21 @@ public class Principal {
                     Cliente cliente = new Cliente(nombre, edad, id);
                     registro.agregarCliente(cliente);
 
-                    registro.mostrarClientes();
-
                     StringBuilder mensaje = new StringBuilder("Lista de Clientes:\n");
                     for (Cliente cl : registro.getCliente()) {
-                        mensaje.append("Nombre: ").append(cliente.getNombreCliente()).append("\n")
-                                .append("Edad: ").append(cliente.getEdadCliente()).append("\n")
-                                .append("ID: ").append(cliente.getIdCliente()).append("\n\n");
+                        mensaje.append("Nombre: ").append(cl.getNombreCliente()).append("\n")
+                                .append("Edad: ").append(cl.getEdadCliente()).append("\n")
+                                .append("ID: ").append(cl.getIdCliente()).append("\n\n");
                     }
                     JOptionPane.showMessageDialog(null, mensaje.toString());
-                    registro.mostrarClientes();
-                }
 
+                    int opcion = JOptionPane.showConfirmDialog(null, "¿Deseas volver al menú principal?", "Volver al Menú", JOptionPane.YES_NO_OPTION);
+                    if (opcion == JOptionPane.YES_OPTION) {
+                        mostrarMenuPrincipal(); // Volver a mostrar el menú principal
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Saliendo del programa...");
+                    }
+                }
                 case "Salir" -> {
                     JOptionPane.showMessageDialog(null, "Saliendo del programa...");
                 }
@@ -88,7 +97,7 @@ public class Principal {
     }
 
     private static String capturarNombre() {
-        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente (o deje vacío para salir):");
+        String nombre = JOptionPane.showInputDialog("Ingrese el nombre del cliente :");
         if (nombre.isEmpty()) {
             return capturarNombre();
         }

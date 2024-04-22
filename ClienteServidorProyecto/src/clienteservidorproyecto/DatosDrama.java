@@ -90,6 +90,29 @@ public class DatosDrama {
     }
     return miListaDrama;
 }
+    public boolean eliminarDrama(int idDrama) {
+    Conexion con = new Conexion();
+    PreparedStatement ps = null;
+    String sql = "DELETE FROM drama WHERE IdD=?";
+    try {
+        ps = con.getConexion().prepareStatement(sql);
+        ps.setInt(1, idDrama);
+        ps.executeUpdate();
+        return true;
+    } catch (SQLException e) {
+        System.err.println("Error al eliminar drama: " + e.getMessage());
+        return false;
+    } finally {
+        try {
+            if (ps != null) {
+                ps.close();
+            }
+            con.close();
+        } catch (SQLException e) {
+            System.err.println("Error al cerrar recursos: " + e.getMessage());
+        }
+    }
+}
 }
     
 
